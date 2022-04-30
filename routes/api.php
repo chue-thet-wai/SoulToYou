@@ -20,6 +20,8 @@ use App\Http\Controllers\Api\ApiController;
 });*/
 Route::middleware('auth:sanctum')->group( function () {
     Route::post('profile', [ApiController::class, 'profile']);
+    Route::post('home_slider', [ApiController::class, 'home_slider']);
+    Route::post('single_artists', [ApiController::class, 'single_artists']);
     Route::post('news', [ApiController::class, 'news_list']);
     Route::post('news_bytype', [ApiController::class, 'news_list_bytype']);
 });

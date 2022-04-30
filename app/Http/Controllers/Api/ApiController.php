@@ -155,6 +155,39 @@ class ApiController extends Controller
         ]);
     }
 
+    public function home_slider(Request $request){
+        $slider_res = DB::select('select * from idol_bands order by created_at');
+
+        $slider_arr=array();
+        foreach($slider_res as $n){
+            $slider_one=array();
+            $slider_one['band_id']  =$n->band_id;
+            $slider_one['name']    =$n->name;
+            $slider_one['image']   =asset('news_images/'.$n->main_image);
+            $slider_one['twitter_subscriber']  =$n->twitter_subscriber;
+            $slider_one['instagram_subscriber']=$n->instagram_subscriber;
+            $slider_arr[]=$slider_one;
+        }       
+
+        return response()->json($slider_arr);
+    }
+
+    public function single_artists(Request $request){
+        $solo_res = DB::select('select * from idol_artists where band_id="99" ');
+
+        $solo_arr=array();
+        foreach($slider_res as $n){
+            $solo_one=array();
+            $solo_one['artist_id']   =$n->artist_id;
+            $solo_one['name']        =$n->name;
+            $solo_one['image']       =asset('news_images/'.$n->main_image);
+           
+            $solo_arr[]=$solo_one;
+        }       
+
+        return response()->json($solo_arr);
+    }
+
     public function news_list(){
         $allnews_res = DB::select('select * from idol_news order by created_at');
         $news_type=(new IdolNewsController)->news_type();
@@ -212,6 +245,7 @@ class ApiController extends Controller
 
         return response()->json($return_arr);
     }
+    
     
 
 }
