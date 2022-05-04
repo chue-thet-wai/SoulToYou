@@ -44,31 +44,39 @@ class IdolBandsController extends Controller
     {
         $userid = Auth::id(); 
         $request->validate([
-            'name'      =>'required|min:3',
+            'name'      =>'required|min:1',
             'about'      =>'required|min:3',
             'imageFile.*' => 'mimes:jpeg,jpg,png,gif,csv,txt,pdf|max:2048',
             'band_image' =>'required | mimes:jpeg,jpg,png | max:1000',
         ]);
+
+        $b=new IdolBands();
+        $band_id=$b->get_unique_band_id();
+
         if($request->hasFile('band_image')){
             $image=$request->file('band_image');
-            $image_name=time() .'-'.$image->getClientOriginalName();
+            $extension = $image->extension();
+            //$image_name=time() .'-'.$image->getClientOriginalName();
+            $prefix="main";
+            $image_name = $band_id . "_" . time() . "_" . $prefix . "." . $extension;
         }else{
-            $image_name="default.png";
+            $image_name="";
         } 
         
         $imgData=[];
         if($request->hasfile('imageFile')) {
+            $count=1;
             foreach($request->file('imageFile') as $file)
             {
-                $name = $file->getClientOriginalName();
-                echo $name;
+                $extension = $file->extension();
+                //$name = $file->getClientOriginalName();
+                $name = $band_id . "_" . time() . "_" . $count . "." . $extension;
                 $file->move(public_path('bands_images'), $name);  
-                $imgData[] = $name;  
+                $imgData[] = $name; 
+                $count++; 
             }
         }     
     
-        $b=new IdolBands();
-        $band_id=$b->get_unique_band_id();
         $b->band_id       =$band_id;
         $b->name          =$request->name;
         $b->about         =$request->about;
@@ -125,7 +133,7 @@ class IdolBandsController extends Controller
         $userid = Auth::id(); 
 
         $request->validate([
-            'name'      =>'required|min:3',
+            'name'      =>'required|min:1',
             'about'      =>'required|min:3',
             'imageFile.*' => 'mimes:jpeg,jpg,png,gif,csv,txt,pdf|max:2048',
         ]);
@@ -141,24 +149,57 @@ class IdolBandsController extends Controller
             'updated_by'         => $userid,           
         );
         
+        //To Save Main Image
         if($request->hasFile('band_image')){
+            //To delete previous image
+            $previous_img=$request->previous_image;
+            @unlink(public_path('bands_images/'. $previous_img));
+
             $image=$request->file('band_image');
-            $image_name=time() .'-'.$image->getClientOriginalName();
+            $extension = $image->extension();
+            //$image_name=time() .'-'.$image->getClientOriginalName();
+            $prefix="main";
+            $image_name = $id . "_" . time() . "_" . $prefix . "." . $extension;
             $image->move(public_path('bands_images'),$image_name);
             $fields['main_image']=$image_name;
         }
-        
+
+        //To Delete Images
+        $delete_images=$request->previous_upload;
+        $remain_images=array();
+        $bands_res = DB::select('select * from idol_bands where band_id="'.$id.'"');
+        $images=json_decode($bands_res[0]->images);
+
+        if($delete_images){
+            foreach($delete_images as $d_img){
+                @unlink(public_path('bands_images/'. $d_img));
+            }            
+            $remain_images=array_diff($images,$delete_images);     
+        }else{
+            $remain_images=(array)$images;
+        }   
+
+        //Upload Multiple Images
         if($request->hasfile('imageFile')) {
-            $imgData=[];
+            $imgData=[];            
+            if($remain_images){
+                $imgData=array_merge($remain_images,$imgData);
+            }
+            $count=1;
             foreach($request->file('imageFile') as $file)
             {
-                $name = $file->getClientOriginalName();
-                echo $name;
+                $extension = $file->extension();
+                //$name = $file->getClientOriginalName();
+                $name = $id . "_" . time() . "_" . $count . "." . $extension;
                 $file->move(public_path('bands_images'), $name);  
-                $imgData[] = $name;  
-            }
+                $imgData[] = $name; 
+                $count++; 
+            }            
             $fields['images']=json_encode($imgData);
-        }  
+        }else{
+            $fields['images']=json_encode($remain_images);
+        }
+
         
         $result=DB::table('idol_bands')
             ->where('band_id', $id)  
@@ -181,17 +222,31 @@ class IdolBandsController extends Controller
      */
     public function destroy($id)
     {
-        $result = DB::delete('Delete from idol_bands where band_id="'.$id.'"');
-        if($result){
-            return redirect(route('bands.index'))->with('success','Band Deleted Successfully!');
+        $bands_res = DB::select('select * from idol_bands where band_id="'.$id.'"');
+        if($bands_res){
+            $main_image=$bands_res[0]->main_image;
+            @unlink(public_path('bands_images/'. $main_image));
+            $images=$bands_res[0]->images;
+            foreach(json_decode($images) as $img){
+                @unlink(public_path('bands_images/'. $img));
+            }
+            $result = DB::delete('Delete from idol_bands where band_id="'.$id.'"');
+            if($result){
+                return redirect(route('bands.index'))->with('success','Band Deleted Successfully!');
+            }
+        }else{
+            return redirect(route('bands.index'))->with('error','There is no result with this band.');
         }
+       
+        
     }
 
     public function band_type(){
         return array(
             "10"=>"Girl Group",
             "11"=>"Boy Group",
-            "12"=>"Other"
+            "12"=>"Solo",
+            //"13"=>"Other"
         );
     }
 

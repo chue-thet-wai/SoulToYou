@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Birth Date</label>
-                            <input type="text" name="birth_date" class="form-control" required>
+                            <input type="date" name="birth_date" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="">Zondic</label>
@@ -80,7 +80,7 @@
                             <label for="">Choose Band</label>
                             <br />
                             <select class="form-select" name="band_id" >
-                                <option  value="99">Solo</option>
+                                <!--<option  value="99">Solo</option>-->
                                 @foreach($bands_list as $a)
                                     <option  value="{{$a->band_id}}">{{$a->name}}</option>
                                 @endforeach

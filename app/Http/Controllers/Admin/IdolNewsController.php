@@ -52,15 +52,21 @@ class IdolNewsController extends Controller
             'description_mm'=>'required|min:3',
             'image'      =>'required | mimes:jpeg,jpg,png | max:1000',
         ]);
-        if($request->hasFile('image')){
-            $image=$request->file('image');
-            $image_name=time() .'-'.$image->getClientOriginalName();
-        }else{
-            $image_name="default.png";
-        }
-        
+
         $n=new IdolNews();
         $new_id=$n->get_unique_new_id();
+
+        if($request->hasFile('image')){
+            $image=$request->file('image');
+            //$image_name=time() .'-'.$image->getClientOriginalName();
+            
+            $extension = $image->extension();
+            $image_name = $new_id . "_" . time() . "." . $extension;
+        }else{
+            $image_name="";
+        }
+        
+        
         $n->new_id         =$new_id;
         $n->title          =$request->title;
         $n->title_mm       =$request->title_mm;
@@ -133,9 +139,16 @@ class IdolNewsController extends Controller
         
         
         if($request->hasFile('image')){
+            //To delete previous image
+            $previous_img=$request->previous_image;
+            @unlink(public_path('news_images/'. $previous_img));
+            
             $image=$request->file('image');
-            $image_name=time() .'-'.$image->getClientOriginalName();
+            // $image_name=time() .'-'.$image->getClientOriginalName();
+            $extension = $image->extension();
+            $image_name = $id . "_" . time() . "." . $extension;
             $image->move(public_path('news_images'),$image_name);
+
             $fields['image']=$image_name;
         }      
         
@@ -158,10 +171,20 @@ class IdolNewsController extends Controller
      */
     public function destroy($id)
     {
-        $result = DB::delete('Delete from idol_news where new_id="'.$id.'"');
-        if($result){
-            return redirect(route('news.index'))->with('success','New Deleted Successfully!');
+        $new_res = DB::select('select * from idol_news where album_id="'.$id.'"');
+        if($new_res){
+            $image=$new_res[0]->image;
+            @unlink(public_path('news_images/'. $image));
+            
+            $result = DB::delete('Delete from idol_news where new_id="'.$id.'"');
+            if($result){
+                return redirect(route('news.index'))->with('success','New Deleted Successfully!');
+            }
+        }else{
+            return redirect(route('albums.index'))->with('error','There is no result with this new.');
         }
+
+        
     }
 
     function news_type(){

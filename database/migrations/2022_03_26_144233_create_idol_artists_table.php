@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('birth_name');
             $table->string('korea_name');
-            $table->string('birth_date');
+            $table->timestamp('birth_date');
             $table->string('zondic');
             $table->string('height');
             $table->string('blood_type');
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->text('about');
             $table->text('about_mm');
             $table->string('main_image');
-            $table->string('images');
+            $table->text('images')->nullable;
             $table->string('status');
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();

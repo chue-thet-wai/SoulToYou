@@ -1,6 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
+@php
+    echo "
+    <script>
+        $(document).ready(function() {
+            $('#band').change(function(){
+                isshow_artist();  
+            });
+            isshow_artist();
+            function isshow_artist(){
+                var bandName = $('#band').val(); 
+                if(bandName=='99')  {
+                    $('#artist-group').show();
+                }else{
+                    $('#artist-group').hide();
+                }
+            }
+        });
+    </script>
+    ";
+@endphp
 <div class="container">
     <div class="row">
         <div class="col-md-8">
@@ -39,17 +59,17 @@
                         <div class="form-group">
                             <label for="">Choose Band</label>
                             <br />
-                            <select class="form-select" name="band" >
+                            <select class="form-select" id="band" name="band" >
                                 <option  value="99">Solo</option>
                                 @foreach($bands_list as $b)
                                     <option  value="{{$b->band_id}}">{{$b->name}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="artist-group">
                             <label for="">Choose Artist</label>
                             <br />
-                            <select class="form-select" name="artist" >
+                            <select class="form-select" id="artist" name="artist" >
                                 <option  value="">Select Artist</option>
                                 @foreach($artists_list as $a)
                                     <option  value="{{$a->artist_id}}">{{$a->name}}</option>

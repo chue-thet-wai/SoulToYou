@@ -24,6 +24,10 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('single_artists', [ApiController::class, 'single_artists']);
     Route::post('news', [ApiController::class, 'news_list']);
     Route::post('news_bytype', [ApiController::class, 'news_list_bytype']);
+    Route::post('band_detail', [ApiController::class, 'band_detail']);
+    Route::post('bands_group', [ApiController::class, 'bands_group']);
+    Route::post('bands_group_bytype', [ApiController::class, 'bands_group_bytype']);
+    Route::post('artist_detail', [ApiController::class, 'artist_detail']);
 });
 
 Route::post('login', [ApiController::class, 'login']);

@@ -41,6 +41,11 @@ Route::get('/news/detail/{id}', [App\Http\Controllers\UserHomeController::class,
 Route::get('/videos',[App\Http\Controllers\UserHomeController::class, 'user_videos']);
 Route::get('/artists',[App\Http\Controllers\UserHomeController::class, 'user_artists']);
 
+//Ajax
+Route::group(['namespace'=>'App\Http\Controllers'],function(){
+    Route::post('isReact','AjaxController@isReact');
+});
+
 
 //Login
 Auth::routes();

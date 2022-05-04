@@ -16,9 +16,7 @@ class IdolQuizzes extends Model
         while ($found) {
             $uniqueID = uniqid ("Q", true);
            
-            $result = DB::select('select * from idol_quizzes where quiz_id = "'.$uniqueID.'"');
-    
-            
+            $result = DB::select('select * from idol_quizzes where quiz_id = "'.$uniqueID.'"');           
     
             if ($result) {
                 $found=true;

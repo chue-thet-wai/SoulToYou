@@ -5,6 +5,7 @@
 @php
 
 echo "
+<script src = 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script>
    
     $(document).ready(function() {
@@ -21,6 +22,22 @@ echo "
             $('#show_band_instasubscriber').text(instaSubscriber+' Subscribers');
         }
     });
+    function isReact(type,id,react) {
+        $.ajax({
+            type:'POST',
+            url:'/isReact',
+            headers: {'X-CSRF-TOKEN': $('meta[name=\'csrf-token\']').attr('content')},
+            data: {
+                'type': type,
+                'id'  : id,
+                'react':react
+            },
+            success:function(data) {
+                alert(data.id)
+                //$('#react_count').text(data.id);
+            }
+        });
+    }
 </script>
 ";
 
@@ -143,10 +160,12 @@ echo "
                     <div class="row">
                         <div class="col-sm-2">
                             <!--<img src="{{asset('subscriber.png')}}" alt="" style="width:3%;height:3%;margin-top:-1%;">Like-->
-                            <img src="{{asset('images/like_gray.png')}}" alt="like"/> 23
+                            <img src="{{asset('images/like_gray.png')}}" alt="like" onclick="isReact('news','{{$breaking_new[0]->new_id}}','1');"/> 
+                            <div id="react_count">23</div>
                         </div>
                         <div class="col-sm-2">
-                            <img src="{{asset('images/unlike_gray.png')}}" alt="like" style="margin-top:10%;" /> 5
+                            <img src="{{asset('images/unlike_gray.png')}}" alt="like" style="margin-top:10%;" onclick="isReact('news','{{$breaking_new[0]->new_id}}','2');"/> 
+                            <div id="react_count">23</div>
                         </div>
                         <div class="col-sm-4">
                             <img src="{{asset('images/comment.png')}}" alt="like" width="20px;"/>

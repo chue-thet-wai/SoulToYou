@@ -61,15 +61,19 @@ class IdolAlbumController extends Controller
                 'artist'      =>'required',
             ]);
         }
-        if($request->hasFile('album_image')){
-            $image=$request->file('album_image');
-            $image_name=time() .'-'.$image->getClientOriginalName();
-        }else{
-            $image_name="default.png";
-        }
-        
+
         $n=new IdolAlbum();
         $album_id=$n->get_unique_album_id();
+
+        if($request->hasFile('album_image')){
+            $image=$request->file('album_image');
+            //$image_name=time() .'-'.$image->getClientOriginalName();
+            $extension = $image->extension();
+            $image_name = $album_id . "_" . time() . "." . $extension;
+        }else{
+            $image_name="";
+        }        
+        
         $n->album_id        =$album_id;
         $n->title           =$request->title;
         $n->description     =$request->description;
@@ -166,9 +170,16 @@ class IdolAlbumController extends Controller
         }
         
         if($request->hasFile('album_image')){
+            //To delete previous image
+            $previous_img=$request->previous_image;
+            @unlink(public_path('albums_images/'. $previous_img));
+            
             $image=$request->file('album_image');
-            $image_name=time() .'-'.$image->getClientOriginalName();
+            //$image_name=time() .'-'.$image->getClientOriginalName();
+            $extension = $image->extension();
+            $image_name = $id . "_" . time() . "." . $extension;
             $image->move(public_path('albums_images'),$image_name);
+
             $fields['image']=$image_name;
         }      
         
@@ -191,9 +202,19 @@ class IdolAlbumController extends Controller
      */
     public function destroy($id)
     {
-        $result = DB::delete('Delete from idol_albums where album_id="'.$id.'"');
-        if($result){
-            return redirect(route('albums.index'))->with('success','Albums Deleted Successfully!');
+        $album_res = DB::select('select * from idol_albums where album_id="'.$id.'"');
+        if($album_res){
+            $image=$album_res[0]->image;
+            @unlink(public_path('albums_images/'. $image));
+            
+            $result = DB::delete('Delete from idol_albums where album_id="'.$id.'"');
+            if($result){
+                return redirect(route('albums.index'))->with('success','Albums Deleted Successfully!');
+            }
+        }else{
+            return redirect(route('albums.index'))->with('error','There is no result with this album.');
         }
+
+        
     }
 }

@@ -43,7 +43,8 @@
                         </div>
                         <div class="form-group">
                             <label for="">Birth Date</label>
-                            <input type="text" name="birth_date" class="form-control" value="{{$artists_res[0]->birth_date}}" required>
+                            @php $birth_date=date('Y-m-d',strtotime($artists_res[0]->birth_date)); @endphp
+                            <input type="date" name="birth_date" class="form-control" value="{{$birth_date}}" required>
                         </div>
                         <div class="form-group">
                             <label for="">Zondic</label>
@@ -69,14 +70,14 @@
                             <label for="">About MM</label>
                             <textarea name="about_mm" class="form-control" required>{{$artists_res[0]->about_mm}}</textarea>
                         </div>
-
+                        <input type="hidden" id="previous_image" name="previous_image" value="{{$artists_res[0]->main_image}}">
                         <div class="form-group">
                             <label for="">Choose Related Image</label>
                             <input type="file" name="artist_image">
                             <br />
                             <img src="{{asset('artists_images/'.$artists_res[0]->main_image)}}" style="width:200px;border-radius:5px;" />
                         </div>
-                        <br />         
+                        <br />        
                         <div class="custom-file">
                             <label class="custom-file-label" for="images">Choose images</label>
                             <input type="file" name="imageFile[]" class="custom-file-input" id="images" multiple="multiple">                            
@@ -85,13 +86,29 @@
                         <div class="user-image mb-3 text-center">
                             <div class="imgPreview"> 
                             </div>
-                        </div>  
+                        </div> 
+                        <br /> 
+                        <div class="previous_upload"> 
+                            <label for="">Previous Uploaded Image<br />
+                                <h5>(If you want to delete , please check the image.)</h5>
+                            </label>
+                            <br />
+                            <div class="previous_images" style="display: -webkit-box;overflow-y: auto;">
+                            
+                            @foreach(json_decode($artists_res[0]->images) as $img)
+                                <div style="width:200px;border-radius:5px;padding:1%;margin-left:5%;">
+                                    <div class="row"><input type="checkbox"  name="previous_upload[]" value="{{$img}}"></div>                                
+                                    <div class="row"><img src="{{asset('artists_images/'.$img)}}" style="width:100%;"  /></div>
+                                </div>
+                            @endforeach
+                            </div>
+                        </div>                         
                         <br />
                         <div class="form-group">
                             <label for="">Choose Band</label>
                             <br />
                             <select class="form-select" name="band_id" >
-                                <option  value="99">Solo</option>
+                                <!--<option  value="99">Solo</option>-->
                                 @foreach($bands_list as $a)
                                     <option  value="{{$a->band_id}}"
                                         @if($a->band_id==$artists_res[0]->band_id)

@@ -55,26 +55,33 @@ class IdolArtistController extends Controller
             'imageFile.*' => 'mimes:jpeg,jpg,png,gif,csv,txt,pdf|max:2048',
             'artist_image' =>'required | mimes:jpeg,jpg,png | max:1000',
         ]);
+
+        $n=new IdolArtist();
+        $artist_id=$n->get_unique_artist_id();
+
         if($request->hasFile('artist_image')){
             $image=$request->file('artist_image');
-            $image_name=time() .'-'.$image->getClientOriginalName();
+            //$image_name=time() .'-'.$image->getClientOriginalName();
+             $extension = $image->extension();
+             $prefix="main";
+             $image_name = $artist_id . "_" . time() . "_" . $prefix . "." . $extension;
         }else{
-            $image_name="default.png";
-        }
+            $image_name="";
+        }        
 
         $imgData=[];
         if($request->hasfile('imageFile')) {
+            $count=1;
             foreach($request->file('imageFile') as $file)
             {
-                $name = $file->getClientOriginalName();
-                echo $name;
+                $extension = $file->extension();
+                $name = $artist_id . "_" . time() . "_" . $count . "." . $extension;
                 $file->move(public_path('artists_images'), $name);  
-                $imgData[] = $name;  
+                $imgData[] = $name;
+                $count++;   
             }
         }   
         
-        $n=new IdolArtist();
-        $artist_id=$n->get_unique_artist_id();
         $n->artist_id =$artist_id;
         $n->name      =$request->name;
         $n->member_type =$request->member_type;
@@ -148,7 +155,7 @@ class IdolArtistController extends Controller
     {
         $userid = Auth::id(); 
         $request->validate([
-            'name'=>'required|min:3',
+            'name'=>'required|min:1',
             'about'=>'required|min:3',
             'imageFile.*' => 'mimes:jpeg,jpg,png,gif,csv,txt,pdf|max:2048',
         ]);
@@ -173,23 +180,54 @@ class IdolArtistController extends Controller
         );
         
         if($request->hasFile('artist_image')){
+            //To delete previous image
+            $previous_img=$request->previous_image;
+            @unlink(public_path('artists_images/'. $previous_img));
+
             $image=$request->file('artist_image');
-            $image_name=time() .'-'.$image->getClientOriginalName();
+            //$image_name=time() .'-'.$image->getClientOriginalName();
+            $extension = $image->extension();
+            $prefix="main";
+            $image_name = $id . "_" . time() . "_" . $prefix . "." . $extension;
+
             $image->move(public_path('artists_images'),$image_name);
             $fields['main_image']=$image_name;
+        }  
+
+        //To Delete Images
+        $delete_images=$request->previous_upload;
+        $remain_images=array();
+        $artists_res = DB::select('select * from idol_artists where artist_id="'.$id.'"');
+        $images=json_decode($artists_res[0]->images);
+
+        if($delete_images){
+            foreach($delete_images as $d_img){
+                @unlink(public_path('artists_images/'. $d_img));
+            }            
+            $remain_images=array_diff($images,$delete_images);     
+        }else{
+            $remain_images=(array)$images;
         }  
         
         if($request->hasfile('imageFile')) {
             $imgData=[];
+            if($remain_images){
+                $imgData=array_merge($remain_images,$imgData);
+            }
+            $count=1;
             foreach($request->file('imageFile') as $file)
             {
-                $name = $file->getClientOriginalName();
-                echo $name;
+                $extension = $file->extension();
+                //$name = $file->getClientOriginalName();
+                $name = $id . "_" . time() . "_" . $count . "." . $extension;
                 $file->move(public_path('artists_images'), $name);  
-                $imgData[] = $name;  
+                $imgData[] = $name; 
+                $count++; 
             }
             $fields['images']=json_encode($imgData);
-        }  
+        }else{
+            $fields['images']=json_encode($remain_images);
+        } 
         
         $result=DB::table('idol_artists')
             ->where('artist_id', $id)  
@@ -211,10 +249,23 @@ class IdolArtistController extends Controller
      */
     public function destroy($id)
     {
-        $result = DB::delete('Delete from idol_artists where artist_id="'.$id.'"');
-        if($result){
-            return redirect(route('artists.index'))->with('success','Artist Deleted Successfully!');
+        $artists_res = DB::select('select * from idol_artists where artist_id="'.$id.'"');
+        if($artists_res){
+            $main_image=$artists_res[0]->main_image;
+            @unlink(public_path('artists_images/'. $main_image));
+            $images=$artists_res[0]->images;
+            foreach(json_decode($images) as $img){
+                @unlink(public_path('artists_images/'. $img));
+            }
+            $result = DB::delete('Delete from idol_artists where artist_id="'.$id.'"');
+            if($result){
+                return redirect(route('artists.index'))->with('success','Artist Deleted Successfully!');
+            }
+        }else{
+            return redirect(route('bands.index'))->with('error','There is no result with this artist.');
         }
+
+        
     }
 
     function artist_member_type(){

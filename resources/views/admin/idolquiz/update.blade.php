@@ -36,6 +36,7 @@
                             <label for="">Option D</label>
                             <textarea name="option_4" class="form-control" required>{{$quiz_res[0]->option_four}}</textarea>
                         </div>
+                        <input type="hidden" id="previous_image" name="previous_image" value="{{$quiz_res[0]->image}}">
                         <div class="form-group">
                             <label for="">Choose Related Image</label>
                             <input type="file" name="image">

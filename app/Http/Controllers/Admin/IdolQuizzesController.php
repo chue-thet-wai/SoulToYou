@@ -51,15 +51,20 @@ class IdolQuizzesController extends Controller
             'option_4'      =>'required|min:3',
             'image'         =>'mimes:jpeg,jpg,png | max:1000',
         ]);
-        if($request->hasFile('image')){
-            $image=$request->file('image');
-            $image_name=time() .'-'.$image->getClientOriginalName();
-        }else{
-            $image_name="default.png";
-        }
-        
+
         $n=new IdolQuizzes();
         $quiz_id=$n->get_unique_quiz_id();
+
+        if($request->hasFile('image')){
+            $image=$request->file('image');
+            //$image_name=time() .'-'.$image->getClientOriginalName();
+            $extension = $image->extension();
+            $image_name = $quiz_id . "_" . time() . "." . $extension;
+        }else{
+            $image_name="";
+        }
+        
+        
         $n->quiz_id         =$quiz_id;
         $n->question        =$request->question;
         $n->option_one      =$request->option_1;
@@ -134,9 +139,16 @@ class IdolQuizzesController extends Controller
         
         
         if($request->hasFile('image')){
+            //To delete previous image
+            $previous_img=$request->previous_image;
+            @unlink(public_path('quiz_images/'. $previous_img));
+            
             $image=$request->file('image');
-            $image_name=time() .'-'.$image->getClientOriginalName();
+            // $image_name=time() .'-'.$image->getClientOriginalName();
+            $extension = $image->extension();
+            $image_name = $id . "_" . time() . "." . $extension;
             $image->move(public_path('quiz_images'),$image_name);
+
             $fields['image']=$image_name;
         }      
         
@@ -159,10 +171,20 @@ class IdolQuizzesController extends Controller
      */
     public function destroy($id)
     {
-        $result = DB::delete('Delete from idol_quizzes where quiz_id="'.$id.'"');
-        if($result){
-            return redirect(route('quiz.index'))->with('success','Quiz Deleted Successfully!');
+        $quiz_res = DB::select('select * from idol_quizzes where quiz_id="'.$id.'"');
+        if($quiz_res){
+            $image=$quiz_res[0]->image;
+            @unlink(public_path('quiz_images/'. $image));
+            
+            $result = DB::delete('Delete from idol_quizzes where quiz_id="'.$id.'"');
+            if($result){
+                return redirect(route('quiz.index'))->with('success','Quiz Deleted Successfully!');
+            }
+        }else{
+            return redirect(route('albums.index'))->with('error','There is no result with this quiz.');
         }
+
+        
     }
 
     public function quiz_answer_array(){

@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('idol_reactions', function (Blueprint $table) {
+        Schema::create('idol_comments', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
-            $table->string('is_like');
+            $table->string('comment');
             $table->string('content_id');
             $table->string('type');
             $table->timestamps();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('idol_reactions');
+        Schema::dropIfExists('idol_comments');
     }
 };

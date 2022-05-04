@@ -44,6 +44,7 @@
                             <label for="">News Description MM</label>
                             <textarea name="description_mm" class="form-control" required>{{$news_res[0]->description}}</textarea>
                         </div>
+                        <input type="hidden" id="previous_image" name="previous_image" value="{{$news_res[0]->image}}">
                         <div class="form-group">
                             <label for="">Choose Related Image</label>
                             <input type="file" name="image">

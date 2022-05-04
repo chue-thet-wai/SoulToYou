@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('about');
             $table->text('about_mm');
             $table->string('main_image');
-            $table->string('images');
+            $table->text('images')->nullable();
             $table->string('twitter_subscriber');
             $table->string('instagram_subscriber');
             $table->string('band_type');

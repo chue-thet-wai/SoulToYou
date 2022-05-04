@@ -18,7 +18,8 @@ class UserHomeController extends Controller
 
         $mtv_res = DB::select('select * from idol_mtvs order by created_at limit 6');   
         
-        $solo_res = DB::select('select * from idol_artists where band_id="99" ');
+        $solo_res = DB::select('select idol_artists.* from idol_artists left join idol_bands on idol_artists.band_id=idol_bands.band_id
+         where idol_bands.band_type="12" ');
 
         return view('welcome',['bands_slide' => $bands_res,"breaking_new"=>$breaking_new,"trending_new"=>$trending_new,
         "popular_new"=>$popular_new,"mtv_list"=>$mtv_res,"solo_res"=>$solo_res]);
@@ -61,4 +62,5 @@ class UserHomeController extends Controller
         $artists_res = DB::select('select * from idol_artists');
         return view('user.artists',['idol_artists' => $artists_res]);
     }
+
 }

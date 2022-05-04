@@ -28,23 +28,41 @@
                             <label for="">About MM</label>
                             <textarea name="about_mm" class="form-control" required>{{$bands_res[0]->about_mm}}</textarea>
                         </div>
+                        <input type="hidden" id="previous_image" name="previous_image" value="{{$bands_res[0]->main_image}}">
                         <div class="form-group">
-                            <label for="">Choose Related Image</label>
+                            <label for="">Choose Main Image</label>
                             <input type="file" name="band_image">
                             <br />
                             <img src="{{asset('bands_images/'.$bands_res[0]->main_image)}}" style="width:200px;border-radius:5px;" />
                         </div> 
                         <br />         
                         <div class="custom-file">
-                            <label class="custom-file-label" for="images">Choose images</label>
+                            <label class="custom-file-label" for="images">Choose images(For Multi-Image)</label>
                             <input type="file" name="imageFile[]" class="custom-file-input" id="images" multiple="multiple">                            
                         </div>
-                        <br />
+                        <br /> 
                         <div class="user-image mb-3 text-center">
                             <div class="imgPreview"> 
                             </div>
                         </div>  
+                        <br />                      
+                        <div class="previous_upload"> 
+                            <label for="">Previous Uploaded Image<br />
+                                <h5>(If you want to delete , please check the image.)</h5>
+                            </label>
+                            <br />
+                            <div class="previous_images" style="display: -webkit-box;overflow-y: auto;">
+                            
+                            @foreach(json_decode($bands_res[0]->images) as $img)
+                                <div style="width:200px;border-radius:5px;padding:1%;margin-left:5%;">
+                                    <div class="row"><input type="checkbox"  name="previous_upload[]" value="{{$img}}"></div>                                
+                                    <div class="row"><img src="{{asset('bands_images/'.$img)}}" style="width:100%;"  /></div>
+                                </div>
+                            @endforeach
+                            </div>
+                        </div>                        
                         <br />
+                        
                         <div class="form-group">
                             <label for="">Twitter Subscribers</label>
                             <input type="text" name="twitter_subscriber" class="form-control" value="{{$bands_res[0]->twitter_subscriber}}" required>
