@@ -13,7 +13,10 @@ Route::group(['prefix'=>'admin','namespace'=>'App\Http\Controllers\Admin','middl
     Route::resource('quiz','IdolQuizzesController'); 
     Route::get('/userlist','IdolManageUser@show_userlist');   
     Route::get('/profile','IdolManageUser@show_profile'); 
-    Route::get('/logout','IdolManageUser@logout');   
+    Route::get('/logout','IdolManageUser@logout');
+    Route::get('/edit/{id}','IdolManageUser@edit_user'); 
+    Route::post('/update/{id}','IdolManageUser@update_user'); 
+    Route::post('/delete/{id}','IdolManageUser@destroy_user');   
 });
 
 /*Route::group(['prefix'=>'admin','namespace'=>'App\Http\Controllers\Admin','middleware'=>'auth'],function(){  

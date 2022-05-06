@@ -27,4 +27,27 @@ class IdolManageUser extends Controller
         Auth::logout();
         return redirect('/');
     }
+    public function edit_user($id)
+    {
+        $user_res = DB::select('select * from users where id="'.$id.'"');
+        return view('admin.idoluser.edit',['user_res' => $user_res]);
+    }
+    public function update_user(Request $request,$id)
+    {
+        $result=DB::table('users')
+        ->where('id', $id) 
+        ->limit(1)
+        ->update(['is_admin' => $request->role_status]);
+        if($result){
+            return redirect(url('admin/userlist'))->with('success','User Updated Successfully!');
+        } 
+    }
+    public function destroy_user($id)
+    {
+        $result = DB::delete('Delete from users where id="'.$id.'"');
+        if($result){
+            return redirect(url('admin/userlist'))->with('success','User Deleted Successfully!');
+        }      
+        
+    }
 }

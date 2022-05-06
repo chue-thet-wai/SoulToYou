@@ -17,6 +17,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Name</th>
+                                <th>Role</th>
                                 <th>Aciton</th>
                             </tr>
                         </thead>
@@ -26,9 +27,17 @@
                             <tr>
                                 <td>@php echo $i;$i++; @endphp</td>
                                 <td>{{$n->name}}</td>
+                                @if($n->is_admin=="1")
+                                    <td>Admin</td>
+                                @else
+                                    <td>User</td>
+                                @endif
                                 <td>
-                                    <a href="{{route('quiz.show',$n->id)}}" class="btn btn-sm btn-primary">View</a>
-                                    
+                                    <a href="{{ url('admin/edit/'.$n->id) }}" class="btn btn-sm btn-primary">Update</a>
+                                    <form method="post" action="{{ url('admin/delete/'.$n->id) }}">
+                                         @csrf
+                                        <input type="submit" class="btn btn-sm btn-danger" value="Delete">
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
