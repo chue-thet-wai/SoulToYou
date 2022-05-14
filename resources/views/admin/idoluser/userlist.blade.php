@@ -3,16 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading contains-buttons">
-                    <h3 class="panel-title">User List
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header contains-buttons">
+                    <h3 class="card-title">User List
                     </h3>
                 </div>
 
-                <div class="panel-body">  
+                <div class="card-body">  
                 <div class="table-responsive">                  
-                    <table class="table table-striped">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -32,8 +32,8 @@
                                 @else
                                     <td>User</td>
                                 @endif
-                                <td>
-                                    <a href="{{ url('admin/edit/'.$n->id) }}" class="btn btn-sm btn-primary">Update</a>
+                                <td style="display: flex;">
+                                    <a href="{{ url('admin/edit/'.$n->id) }}" class="btn btn-sm btn-warning" style="margin-right:5%;">Update</a>
                                     <form method="post" action="{{ url('admin/delete/'.$n->id) }}">
                                          @csrf
                                         <input type="submit" class="btn btn-sm btn-danger" value="Delete">

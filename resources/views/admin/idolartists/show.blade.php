@@ -3,15 +3,15 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading contains-buttons">
-                    <h3 class="panel-title">Artist Details
-                        <a class="btn btn-sm pull-right" href="{{route('artists.index')}}" style="background: #46b1e6;color: #ffffff;margin-top: -1%;"> Back</a>
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header contains-buttons">
+                    <h3 class="card-title">Artist Details
+                        <a class="btn btn-sm pull-right" href="{{route('artists.index')}}" id="form-header-btn"> Back</a>
                     </h3>
                 </div>
 
-                <div class="panel-body"> 
+                <div class="card-body"> 
                     <img src="{{asset('artists_images/'.$artist_res[0]->main_image)}}" style="width:300px;border-radius:5px;" />
                     <br />
                     @foreach(json_decode($artist_res[0]->images) as $img)

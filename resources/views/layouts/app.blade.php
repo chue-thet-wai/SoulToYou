@@ -1,139 +1,153 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="no-js" lang="en">
+
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Soul To You</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cs-skin-elastic.css') }}">  
+    
+
+    <link rel="stylesheet" href="{{ asset('css/admin_style.css') }}">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <!--<link href="https://bootswatch.com/4/minty/bootstrap.min.css" rel="stylesheet">-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
-    <div id="app" style="overflow-x: hidden;">
-        <nav class="navbar navbar-default" style="margin-bottom:0% !important;">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                    <!--<a class="nav-link"
-                                        style="cursor: pointer" 
-                                        data-toggle="modal" 
-                                        data-target="#loginModal">{{ __('Login') }}
-                                    </a>-->
-                                </li>
-                            @endif
-
-                            <!--@if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif-->
-                        @else
-                            <li class="dropdown">
-                                <a id="navbarDropdown" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}<span class="caret">
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
    
+</head>
 
-        <div class="py-4">
-            <div class="row">
-            @if(Auth::check())
-                <div class="col-md-2">                
-                    <!--<ul class="list-group">
-                        <li class="list-group-item" style="background: #46b1e6;color: #ffffff;">Control Panel</li>
-                        <li class="list-group-item"><a href="">Users</a></li>
-                        <li class="list-group-item"><a href="{{route('news.index')}}">News</a></li>
-                        <li class="list-group-item"><a href="{{route('mtvs.index')}}">MTV</a></li>
-                        <li class="list-group-item"><a href="{{route('bands.index')}}">Band</a></li>
-                        <li class="list-group-item"><a href="{{route('albums.index')}}">Albums</a></li>
-                        <li class="list-group-item"><a href="{{route('artists.index')}}">Artists</a></li>
-                    </ul>-->
-                    <div class="wrapper d-flex">
-                        <div class="sidebar"> 
-                            <div class="dashboard-title"><b><i class="fas fa-home"></i>DASHBOARD</b></div>
-                            <small class="text-muted pl-3"><i class="fas fa-user"></i>USER</small>
-                            <ul>
-                                <li><a href="{{ url('admin/profile') }}">Profile</a></li>
-                                <li><a href="{{ url('admin/userlist') }}">User List</a></li>    
-                            </ul> 
-                            <small class="text-muted px-3"><i class="fas fa-newspaper"></i>NEWS</small>
-                            <ul>
-                                <li><a href="{{route('news.index')}}">News</a></li>
-                            </ul> 
-                            <small class="text-muted px-3"><i class="fas fa-video"></i>VIDEOS</small>
-                            <ul>
-                                <li><a href="{{route('mtvs.index')}}">MTV</a></li>
-                                <li><a href="{{route('bands.index')}}">Band</a></li>
-                                <li><a href="{{route('albums.index')}}">Albums</a></li>
-                                <li><a href="{{route('artists.index')}}">Artists</a></li>
-                            </ul>
-                            <small class="text-muted px-3"><i class="fas fa-video"></i>QUIZZES</small>
-                            <ul>
-                                <li><a href="{{route('quiz.index')}}">Quizzes</a></li>
-                            </ul>
-                        </div>
+<body>
+    <!-- Left Panel -->
+    <aside id="left-panel" class="left-panel" style="background-color: #0a2942;">
+        <nav class="navbar navbar-expand-sm" style="background: #0a2942;">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="./"><img src="{{asset('images/footer_logo.png')}}" alt="Logo" style="max-width: 25% !important;"></a>
+                <a class="navbar-brand hidden" href="./"><img src="{{asset('images/footer_logo.png')}}" alt="Logo" style="max-width: 25px !important;"></a>
+            </div>
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="{{route('home')}}"> <i class="menu-icon fas fa-home"></i>Dashboard </a>
+                    </li>
+                    <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fas fa-user"></i>USER</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><a href="{{ url('admin/profile') }}">Profile</a></li>
+                            <li><a href="{{ url('admin/userlist') }}">User List</a></li>
+                        </ul>
+                    </li>
+                    <h3 class="menu-title">NEWS</h3><!-- /.menu-title -->
+                    <li class="menu-item">
+                        <a href="{{route('news.index')}}"><i class="menu-icon fas fa-newspaper"></i> News</a>
+                    </li>
+                    <h3 class="menu-title">VIDEOS</h3><!-- /.menu-title -->
+                    <li class="menu-item">
+                        <a href="{{route('mtvs.index')}}"><i class="menu-icon fas fa-video"></i> MTVS</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{route('bands.index')}}"><i class="menu-icon fas fa-users"></i> BANDS</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{route('albums.index')}}"><i class="menu-icon fas fa-images"></i> ALBUMS</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{route('artists.index')}}"><i class="menu-icon fas fa-star"></i> ARTISTS</a>
+                    </li>
+
+                    <h3 class="menu-title">QUIZZES</h3><!-- /.menu-title -->
+
+                    <li class="menu-item">
+                        <a href="{{route('quiz.index')}}"><i class="menu-icon fas fa-smile"></i> QUIZ</a>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel -->
+
+    <!-- Left Panel -->
+
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <div class="header-left">
+                        <!--<button class="search-trigger"><i class="fa fa-search"></i></button>
+                        <div class="form-inline">
+                            <form class="search-form">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                            </form>
+                        </div> -->  
+                        <div class="page-title">
+                            <h3>Dashboard</h3>
+                        </div>                     
                     </div>
                 </div>
-                <div class="col-md-10 admin_main_content">
-                    @include('layouts.error')
-                    @yield('content')
+                
+                <div class="col-sm-5">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="{{asset('images/user_logo.png')}}" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="{{ url('admin/profile') }}"><i class="fa fa-user"></i> My Profile</a>
+                            <a class="nav-link" href="{{ url('admin/logout') }}"><i class="fa fa-power-off"></i> Logout</a>
+                        </div>
+                    </div>
+                    <b style="float: right;margin-top: 1%;margin-right: 2%;">{{ Auth::user()->name }}</b>
                 </div>
-            </div> 
-            @else              
-                @yield('content')
-            @endif           
-        </div>
-    </div>
+            </div>
+
+        </header><!-- /header -->
+        <!-- Header-->
+        
+        
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-lg-12 mb-4 mt-4">
+                        @include('layouts.error')
+                        @yield('content')
+                    </div>
+                </div><!-- .row -->
+            </div><!-- .animated -->
+        </div><!-- .content -->
+    </div><!-- /#right-panel -->
+
+    <!-- Right Panel -->
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    
+
 </body>
+
 </html>

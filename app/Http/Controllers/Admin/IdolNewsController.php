@@ -20,7 +20,7 @@ class IdolNewsController extends Controller
     public function index()
     {
         $news_res = DB::table('idol_news')
-           ->paginate(2);
+           ->paginate(10);
         return view('admin.idolnews.index',['news' => $news_res]);
     }
 

@@ -18,7 +18,7 @@ class IdolQuizzesController extends Controller
     public function index()
     {
         $quizzes_res = DB::table('idol_quizzes')
-           ->paginate(2);
+           ->paginate(10);
         return view('admin.idolquiz.index',['quizzes' => $quizzes_res]);
     }
 

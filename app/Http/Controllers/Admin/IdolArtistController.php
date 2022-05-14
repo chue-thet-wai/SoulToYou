@@ -22,7 +22,7 @@ class IdolArtistController extends Controller
             ->leftjoin('idol_bands', 'idol_artists.band_id', '=', 'idol_bands.band_id')
             ->select('idol_artists.*', 'idol_bands.name as bandName')
             //->get()
-            ->paginate(2);
+            ->paginate(10);
 
         return view('admin.idolartists.index',['artists' => $artists_res]);
     }

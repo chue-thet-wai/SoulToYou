@@ -3,17 +3,17 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading contains-buttons">
-                    <h3 class="panel-title">News List
-                        <a class="btn btn-sm pull-right" href="{{route('bands.create')}}"  style="background: #46b1e6;color: #ffffff;margin-top: -1%;"> Create</a>
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header contains-buttons">
+                    <h3 class="card-title">News List
+                        <a class="btn btn-sm pull-right" href="{{route('bands.create')}}"  id="form-header-btn"> Create</a>
                     </h3>
                 </div>
 
-                <div class="panel-body">  
+                <div class="card-body">  
                 <div class="table-responsive">                  
-                    <table class="table table-striped">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>No</th>

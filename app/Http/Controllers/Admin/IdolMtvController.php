@@ -25,7 +25,7 @@ class IdolMtvController extends Controller
             ->leftjoin('idol_artists', 'idol_albums.artist_id', '=', 'idol_artists.artist_id')
             ->select('idol_mtvs.*', 'idol_albums.title as albumName','idol_bands.name as bandName','idol_artists.name as artistName')
             //->get()
-            ->paginate(2);
+            ->paginate(10);
 
        
         return view('admin.idolmtvs.index',['mtvs' => $mtv_res]);

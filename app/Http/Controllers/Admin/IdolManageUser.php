@@ -12,7 +12,7 @@ class IdolManageUser extends Controller
     public function show_userlist()
     {
         $user_res = DB::table('users')
-           ->paginate(2);
+           ->paginate(10);
         return view('admin.idoluser.userlist',['user_list' => $user_res]);
     }
     public function show_profile()

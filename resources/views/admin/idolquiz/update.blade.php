@@ -4,15 +4,15 @@
     
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading contains-buttons">
-                    <h3 class="panel-title">Create Quiz
-                        <a class="btn btn-sm btn-success pull-right" href="{{route('quiz.index')}}" style="background: #46b1e6;color: #ffffff;margin-top: -1%;"> Back</a>
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header contains-buttons">
+                    <h3 class="card-title">Create Quiz
+                        <a class="btn btn-sm btn-success pull-right" href="{{route('quiz.index')}}" id="form-header-btn"> Back</a>
                     </h3>
                 </div>
 
-                <div class="panel-body">  
+                <div class="card-body">  
                 <form method="POST" action="{{route('quiz.update',$quiz_res[0]->quiz_id)}}" enctype="multipart/form-data">
                     @csrf
                     {{method_field('PUT')}}

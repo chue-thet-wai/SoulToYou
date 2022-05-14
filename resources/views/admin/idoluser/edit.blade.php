@@ -5,16 +5,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading contains-buttons">
-                    <h3 class="panel-title">User Details
-                        <a class="btn btn-sm pull-right" href="{{ url('admin/userlist') }}" style="background: #46b1e6;color: #ffffff;margin-top: -1%;"> Back</a>
-                    </h3>
+            <div class="card">
+                <div class="card-header contains-buttons">
+                    <h5 class="card-title">User Details
+                        <a class="btn btn-sm pull-right" href="{{ url('admin/userlist') }}" id="form-header-btn"> Back</a>
+                    </h5>
                 </div>
 
-                <div class="panel-body"> 
-                    <div><h3>Name :{{$user_res[0]->name}} </h3></div>
-                    <div><h3>Email:{{$user_res[0]->email}} </h3></div>
+                <div class="card-body"> 
+                    <div><h5>Name :{{$user_res[0]->name}} </h5></div>
+                    <div><h5>Email  :{{$user_res[0]->email}} </h5></div>
                    
                     <br />
                     <div>
@@ -34,7 +34,7 @@
                                 @endif
                                 >User</label>
                             </div>
-                            <input type="submit" class="btn btn-sm btn-danger" value="Update">
+                            <input type="submit" class="btn btn-sm btn-warning" value="Update">
                         </form>
                     </div>
                 </div>
