@@ -3,18 +3,19 @@
 @section('content')
 @php
     echo "
-    <script>
-        $(document).ready(function() {
-            $('#band').change(function(){
+    <script src='https://code.jquery.com/jquery-1.7.1.min.js'></script>
+    <script type='text/javascript'>
+        jQuery(document).ready(function() {
+            jQuery('#band').change(function(){
                 isshow_artist();  
             });
             isshow_artist();
             function isshow_artist(){
-                var bandName = $('#band').val(); 
+                var bandName = jQuery('#band').val(); 
                 if(bandName=='99')  {
-                    $('#artist-group').show();
+                    jQuery('#artist-group').show();
                 }else{
-                    $('#artist-group').hide();
+                    jQuery('#artist-group').hide();
                 }
             }
         });

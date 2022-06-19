@@ -1,0 +1,1221 @@
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus { 
+    /* background-color: blue !important;
+    color: rgb(24, 162, 162) !important;
+    font-size: 20px;
+    font-weight: 500; */
+
+    /* Nav Item */
+
+position: static;
+left: 0%;
+right: 19.83%;
+top: 0%;
+bottom: 0%;
+
+/* Title */
+font-family: "Poppins", Helvetica, sans-serif;
+font-style: normal;
+font-weight: 600 !important;
+font-size: 24px !important;
+line-height: 36px !important;
+/* identical to box height, or 150% */
+
+color: #2CB9C1 !important;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px 4px;
+
+}
+#top{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+
+    position: absolute;
+    /* width: 100%; */
+    width: 1440px;
+    height: 40px;
+    left: 0px;
+    top: 0px;
+
+    /* Gradient #2 */
+
+    background: linear-gradient(95.06deg, #8EB2F9 -0.14%, #5BDDC7 110.84%);
+    border-radius: 0px;
+}
+#top_text{
+    /* Nav Item */
+    position: static;
+    left: 42.89%;
+    right: 42.89%;
+    top: 2%;
+    bottom: 2%;
+
+    /* Body */
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+    color: #FFFFFF;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 127px;
+}
+#nav_text{
+    /* Navigation_Bar */
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    position: absolute;
+    width: 1440px;
+    height: 94px;
+    left: 0px;
+    top: 40px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0px 4px 46px rgba(0, 0, 0, 0.08);
+}
+
+#soul_to_you {
+    /* SOUL TO YOU */
+    position: static;
+    /* width: 153px; */
+    height: 36px;
+    left: 56px;
+    top: -3px;
+
+    font-family: 'Quattrocento';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height, or 150% */
+
+    text-align: center;
+
+    color: #343D4B;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin-left: 8px;
+}
+#artists{
+    /* Nav Item */
+    position: static;
+    left: 0%;
+    right: 19.83%;
+    top: 0%;
+    bottom: 0%;
+
+    /* Title */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    width: 97px;
+    line-height: 36px;
+    /* identical to box height, or 150% */
+    color: #2CB9C1 !important;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 30px;
+    
+}
+
+#nav_bar {
+    /* MAKERS_NAVIGATION_BAR */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+
+    position: fixed;
+    width: 1440px !important;
+    /* width: 100%; */
+    height: 94px;
+    left: 0px;
+    top: 0px;
+
+    /* Drop Shadow #1 */
+
+    filter: drop-shadow(0px 4px 46px rgba(0, 0, 0, 0.08));
+    border-radius: 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+#footer_copyright{
+/* MAKERS_FOOTER */
+
+
+/* Auto layout */
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0px 156px;
+
+position: static;
+/* width: 1440px; */
+width: 100% !important;
+height: 60px;
+left: 0px;
+top: 0px;
+
+background: #000000 !important;
+border-radius: 0px;
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px 0px;
+
+}
+
+#footer{
+    /* MAKERS_FOOTER */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+
+    position: static;
+    width: 1440px;
+    width: 100% !important;
+    height: 265px;
+    left: 0px;
+    top: 0px;
+
+    /* Black */
+
+    background: #0A2942 !important;
+    border-radius: 0px;
+    border: 0.8px solid #A1A6AD;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+#copy_right{
+    /* © 2022 SOUL TO YOU, Inc. All rights reserved. */
+
+
+    position: static;
+    width: 303px;
+    /* height: 28px; */
+    left: 569.5px;
+    top: 16px;
+
+    /* Small */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+    /* identical to box height, or 200% */
+
+    text-align: center;
+
+    /* Gray/Lighter */
+
+    color: #D1D4D6;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 16px;
+}
+#soul_to_you_2{
+    /* SOUL TO YOU */
+    position: static;
+    width: 153px;
+    height: 36px;
+    left: 56px;
+    top: -3px;
+
+    font-family: 'Quattrocento';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height, or 150% */
+
+    text-align: center;
+
+    color: #D1D4D6;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 8px;
+}
+#brand_logo{
+    /* MAKERS_BRAND_LOGO */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    width: 209px;
+    height: 30px;
+    left: 0px;
+    top: 0px;
+
+    border-radius: 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 32px;
+}
+#footer_container{
+    /* Container */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0px;
+
+    position: static;
+    width: 1128px;
+    height: 265px;
+    left: 156px;
+    top: 0px;
+
+    border-radius: 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+#footer_frame{
+    /* Frame 7 */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static !important;
+    width: 792px !important;
+    height: 201px !important;
+    left: 336px !important;
+    top: 32px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 24px !important;
+
+}
+#footer_column{
+    /* Column */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    width: 240px;
+    height: 148px;
+    left: 0px;
+    top: 58.5px;
+
+    border-radius: 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 24px;
+}
+#footer_social{
+    /* Social Media */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px 0px;
+
+    position: static;
+    width: 240px;
+    height: 44px;
+    left: 0px;
+    top: 104px;
+
+    border-radius: 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 16px 0px;
+}
+#facebook{
+    /* ci:facebook */
+    position: static;
+    width: 28px;
+    height: 28px;
+    left: 0px;
+    top: 8px;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+#instagram{
+    /* bxl:instagram-alt */
+    position: static;
+    width: 28px;
+    height: 28px;
+    left: 52px;
+    top: 8px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    /* margin: 0px 24px; */
+    margin-left: 24px;
+}
+#twitter{
+    /* akar-icons:twitter-fill */
+    position: static;
+    width: 28px;
+    height: 28px;
+    left: 104px;
+    top: 8px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    /* margin: 0px 24px; */
+    margin-left: 24px;;
+}
+#footer_text{
+    /* Making the world a better place. */
+    position: static;
+    width: 240px;
+    height: 28px;
+    left: 0px;
+    top: 60px;
+
+    font-family: 'Quattrocento';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 28px;
+    /* identical to box height, or 200% */
+
+    color: #D1D4D6;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 16px 0px;
+}
+#column_1{
+    /* Column */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    width: 200px;
+    height: 201px;
+    left: 592px;
+    top: 0px;
+
+    border-radius: 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    /* margin-right: 48px; */
+}
+#column_2{
+    /* Column */
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    width: 200px;
+    height: 157px;
+    left: 344px;
+    top: 0px;
+
+    border-radius: 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin:0px 48px;
+    /* margin: 0px; */
+}
+#column_3{
+    /* Column */
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    width: 200px;
+    height: 201px;
+    left: 96px;
+    top: 0px;
+
+    border-radius: 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    /* margin: 0px 48px; */
+    /* margin-left: 100px !important; */
+}
+#nav_link_1{
+    /* Navigation Links */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    width: 200px;
+    height: 160px;
+    left: 0px;
+    top: 41px;
+
+    border-radius: 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 10px 48px;
+}
+#Testimonial,#Support,#Terms,#Privacy{
+    /* Testimonials */
+    position: static;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    /* Small */
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+    /* identical to box height, or 200% */
+
+
+    color: #A1A6AD !important;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+#resources{
+    /* RESOURCES */
+    position: static;
+    width: 200px;
+    /* height: 31px; */
+    height: 10px;
+    left: 0px;
+    top: 0px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+
+    /* Secondary */
+
+    color: #2CB9C1 !important;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 10px 0px;
+}
+#maker_nav_bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* padding: 0px 20px; */
+    
+    width: 1440px;
+    height: 94px;
+    
+    /* Drop Shadow #1 */
+    
+    filter: drop-shadow(0px 4px 46px rgba(0, 0, 0, 0.08));
+    border-radius: 0px;
+    
+    /* Inside auto layout */
+    
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+#navbarSupportedContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0px;
+    gap: 127px;
+
+    width: 1128px;
+    height: 92px;
+
+    border-radius: 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+#artists_drop{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    /* padding: 0px 0px 0px 27px; */
+
+    position: static;
+    width: 484px;
+    height: 36px;
+    left: 0px;
+    top: 4px;
+    border-radius: 0px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    /* margin: 0px 48px; */
+    margin-left: 380px !important;
+}
+#video{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    position: static;
+    width: 70px;
+    height: 24px;
+    left: 294px;
+    top: 6px;
+
+    border-radius: 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    /* margin: 0px 32px; */
+    margin-right: 32px;
+    margin-left: 32px;
+    margin-top: 2px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+#news{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    position: static;
+    width: 70px;
+    height: 24px;
+    left: 294px;
+    top: 6px;
+
+    border-radius: 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    /* margin: 0px 32px; */
+    margin-right: 32px;
+    margin-top: 2px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+#quiz{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    position: static;
+    width: 70px;
+    height: 24px;
+    left: 294px;
+    top: 6px;
+
+    border-radius: 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    /* margin: 0px 32px; */
+    margin-right: 63px;
+    margin-top: 2px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+#frame_img{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+    width: 220px;
+    height: 44px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+}
+#user_profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    position: static;
+    width: 183px;
+    height: 44px;
+    left: 396px;
+    top: 6px;
+
+    border-radius: 0px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+    /* margin: 0px 32px; */
+    /* margin-right: 32px; */
+}
+#search{
+    /* ep:search
+
+    Search Icon
+    */
+
+    position: static;
+    width: 24px;
+    height: 24px;
+    left: 763px;
+    top: 10px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+    margin: 0px 40px;
+}
+#menu_right_alt{
+    position: static;
+width: 38px;
+height: 38px;
+left: 835px;
+top: 3px;
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+/* margin: 0px 48px; */
+}
+/* #right_frame{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    position: static;
+    width: 360px;
+    height: 639px;
+    left: 924px;
+    top: 0px;
+    overflow-y: scroll;
+    background: #FFFFFF;
+    border: 0.8px solid #D1D4D6;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 24px;
+} */
+/* #left_frame{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+position: static;
+width: 744px !important;
+height: 766px !important;
+left: 156px !important;
+top: 0px;
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px 24px;
+} */
+
+#black_pink
+{
+    position: static;
+    height: 24px;
+    left: 0px;
+    top: 0px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #F06C5C!important;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+#about{
+
+    position: static;
+    height: 37px;
+    left: 24px;
+    top: 58px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #636B78 !important;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 10px 0px;
+}
+
+#first_page{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px 0px 0px;
+
+    position: static;
+    width: 100% !important;
+    /* width: 310px; */
+    height: 322px;
+    left: 24px;
+    top: 105px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    margin: 10px 0px;
+}
+#second_page{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    /* width: 310px; */
+    width: 100% !important;
+    height: 364px;
+    left: 24px;
+    top: 437px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+    margin: 10px 0px;
+    }
+    .bgbox{
+    padding: 30px;
+    background-color: #0066cc82;
+    text-align: center;
+    width: 100%;
+    }
+#bg{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 24px;
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 66.44%;
+bottom: 0%;
+
+background: linear-gradient(90deg, rgba(44, 185, 193, 0.6) 0%, rgba(0, 0, 0, 0) 74.13%);
+/* Background Blur Effect */
+
+backdrop-filter: blur(6px);
+/* Note: backdrop-filter has minimal browser support */
+
+border-radius: 0px;
+}
+
+#hor{
+/* Hor Grid */
+position: static;
+/* width: 698px; */
+height: 362px;
+left: 24px;
+top: 91px;
+
+background: #EFF5FA !important;
+
+/* Inside auto layout */
+
+flex: none;
+order: 1;
+flex-grow: 0;
+margin: 10px 0px;
+}
+#hor_text{
+position: absolute;
+width: 310px;
+height: 28px;
+left: 194px;
+top: 220px;
+
+font-family: 'Pyidaungsu Book';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 28px;
+/* identical to box height, or 200% */
+
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #e3e7ee !important;
+
+}
+
+#Home{
+position: static;
+/* width: 49px; */
+height: 24px;
+left: 0px;
+top: 0px;
+
+/* Body */
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height, or 150% */
+
+
+color: #636B78 !important;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+margin-right: 10px;
+}
+#Artists{
+position: static;
+/* width: 51px; */
+height: 24px;
+left: 82px;
+top: 0px;
+
+/* Body */
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height, or 150% */
+
+
+color: #636B78;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 2;
+flex-grow: 0;
+margin: 0px 10px;
+}
+
+
+#Details{
+position: static;
+/* width: 56px; */
+height: 24px;
+left: 166px;
+top: 0px;
+
+/* Body */
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height, or 150% */
+
+
+color: #F06C5C;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 4;
+flex-grow: 0;
+/* margin: 0px 10px; */
+}
+
+#card{
+/* Auto layout */
+
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: static;
+width: 399.57px;
+height: 366px;
+left: 0px;
+top: 0px;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+margin-right: 32px;
+}
+#card_body{
+position: static;
+width: 400px;
+height: 236px;
+left: 0px;
+top: 0px;
+
+background: #EFF5FA !important;
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px 0px;
+}
+#card_footer{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px 0px 0px 10.858px;
+
+position: static;
+left: 0%;
+right: -0.11%;
+top: 64.48%;
+bottom: 0%;
+width: 100%;
+
+background: #FFFFFF !important;
+border: 0.868639px solid #D1D4D6 !important;
+box-sizing: border-box;
+border-radius: 0px;
+
+/* Inside auto layout */
+
+flex: none;
+order: 1;
+flex-grow: 0;
+margin: 0px 0px;
+}
+#description{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+
+position: static;
+width: 373.51px;
+height: 30.4px;
+left: 10.86px;
+top: 21.57px;
+border-style: none!important;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 26.0592px 0px;
+}

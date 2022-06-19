@@ -4,7 +4,7 @@
 
 <div class="container" style="margin:5%;">
     <div class="frame">
-        <div class="nav login-nav">
+        <div class="nav login-nav" style="display: block;">
             <ul class="links">
                 <li class="signin-inactive"><a href="{{ route('login') }}" class="btn">Sign in</a></li>
                 <li class="signup-active"><a href="{{ route('register') }}" class="btn">Sign up</a></li>
@@ -50,21 +50,25 @@
                     </div>
                 </div>
                 <div class="row line-group justify-content-center">
-                    <span class="line"></span> 
-                    <small class="px-2 line-text">OR</small> 
-                    <span class="line"></span> 
+                    <div class="col-md-5"><div class="line" style="width:100% !important;"></div></div>
+                    <div class="col-md-2" style="margin-top: -3%;"><small class="px-2 line-text">OR</small></div>
+                    <div class="col-md-5"> <div class="line" style="width:100% !important;"></div> </div>                                        
                 </div> 
                 <div class="row social-group justify-content-center">
-                    <a href="{{ url('auth/google') }}">                    
-                        <button type="button" class="btn btn-icon btn-primary text-left " style="margin-left:5% !important;">
-                            <span><img src="https://img.icons8.com/color/48/000000/google-logo.png" class="img-fluid mr-1" width="25"></span> Google
-                        </button>  
-                    </a>
-                    <a href="{{ url('auth/facebook') }}">                
-                        <button type="button" class="btn btn-icon btn-primary text-left " style="margin-left:5% !important;">
-                            <span class="login-facebook"><div class="fa fa-facebook" width="25"></div></span> Facebook
-                        </button> 
-                    </a>                   
+                    <div class="col-md-6">
+                        <a href="{{ url('auth/google') }}">                    
+                            <button type="button" class="btn btn-icon btn-primary text-left " style="margin-left:5% !important;width:100% !important;">
+                                <span><img src="https://img.icons8.com/color/48/000000/google-logo.png" class="img-fluid mr-1" width="25"></span> Google
+                            </button>  
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{{ url('auth/facebook') }}">                
+                            <button type="button" class="btn btn-icon btn-primary text-left " style="margin-left:5% !important;width:100% !important;">
+                                <span class="login-facebook"><div class="fa fa-facebook" width="25"></div></span> Facebook
+                            </button> 
+                        </a>  
+                    </div>                 
                 </div>
             </form>
             <form class="form-signup" action="{{ route('register') }}" method="post" name="form"> 
@@ -122,21 +126,25 @@
                     </div>
                 </div>
                 <div class="row line-group justify-content-center">
-                    <span class="line"></span> 
-                    <small class="px-2 line-text">OR</small> 
-                    <span class="line"></span> 
+                    <div class="col-md-5"><div class="line" style="width:100% !important;"></div></div>
+                    <div class="col-md-2" style="margin-top: -3%;"><small class="px-2 line-text">OR</small></div>
+                    <div class="col-md-5"> <div class="line" style="width:100% !important;"></div> </div>                                        
                 </div> 
                 <div class="row social-group justify-content-center">
-                    <a href="{{ url('auth/google') }}">                    
-                        <button type="button" class="btn btn-icon btn-primary text-left " style="margin-left:5% !important;">
-                            <span><img src="https://img.icons8.com/color/48/000000/google-logo.png" class="img-fluid mr-1" width="25"></span> Google
-                        </button>  
-                    </a>
-                    <a href="{{ url('auth/facebook') }}">                
-                        <button type="button" class="btn btn-icon btn-primary text-left " style="margin-left:5% !important;">
-                            <span class="login-facebook"><div class="fa fa-facebook" width="25"></div></span> Facebook
-                        </button> 
-                    </a>                   
+                    <div class="col-md-6">
+                        <a href="{{ url('auth/google') }}">                    
+                            <button type="button" class="btn btn-icon btn-primary text-left " style="margin-left:5% !important;width:100% !important;">
+                                <span><img src="https://img.icons8.com/color/48/000000/google-logo.png" class="img-fluid mr-1" width="25"></span> Google
+                            </button>  
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{{ url('auth/facebook') }}">                
+                            <button type="button" class="btn btn-icon btn-primary text-left " style="margin-left:5% !important;width:100% !important;">
+                                <span class="login-facebook"><div class="fa fa-facebook" width="25"></div></span> Facebook
+                            </button> 
+                        </a>  
+                    </div>                 
                 </div>
             </form>            
         </div>

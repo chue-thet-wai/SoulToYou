@@ -88,6 +88,7 @@ class IdolArtistController extends Controller
         $n->birth_name =$request->birth_name;
         $n->korea_name =$request->korea_name;
         $n->birth_date =$request->birth_date;
+        $n->joined_date =$request->joined_date;
         $n->zondic     =$request->zondic;
         $n->height     =$request->height;
         $n->blood_type =$request->blood_type;
@@ -169,6 +170,7 @@ class IdolArtistController extends Controller
             'birth_name' =>$request->birth_name,
             'korea_name' =>$request->korea_name,
             'birth_date' =>$request->birth_date,
+            'joined_date' =>$request->joined_date,
             'zondic'     =>$request->zondic,
             'height'     =>$request->height,
             'blood_type' =>$request->blood_type,

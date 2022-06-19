@@ -47,6 +47,11 @@
                             <input type="date" name="birth_date" class="form-control" value="{{$birth_date}}" required>
                         </div>
                         <div class="form-group">
+                            <label for="">Joined Date</label>
+                            @php $joined_date=date('Y-m-d',strtotime($artists_res[0]->joined_date)); @endphp
+                            <input type="date" name="birth_date" class="form-control" value="{{$joined_date}}" required>
+                        </div>
+                        <div class="form-group">
                             <label for="">Zondic</label>
                             <input type="text" name="zondic" class="form-control" value="{{$artists_res[0]->zondic}}" required>
                         </div>
@@ -149,6 +154,7 @@ echo
         } 
     </style>
     <!-- jQuery -->
+    <script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'></script>
     <script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'></script>
     <script>
         $(function() {

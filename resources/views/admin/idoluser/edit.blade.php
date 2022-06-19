@@ -18,7 +18,7 @@
                    
                     <br />
                     <div>
-                        <form method="post" action="{{ url('admin/update/'.$user_res[0]->id) }}" style="display: inline;" >
+                        <form method="post" action="{{ url('admin/userlist/update/'.$user_res[0]->id) }}" style="display: inline;" >
                             @csrf
                             <div class="form-group"> 
                                 <label for="">Role</label>

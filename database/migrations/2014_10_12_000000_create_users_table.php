@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('fb_id')->nullable();
             $table->string('goolge_id')->nullable();
             $table->integer('is_admin')->default(0);
+            $table->string('image')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }

@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="{{ asset('css/admin_style.css') }}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-     <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+     
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

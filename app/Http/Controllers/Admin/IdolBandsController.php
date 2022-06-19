@@ -19,7 +19,7 @@ class IdolBandsController extends Controller
     public function index()
     {
         $bands_res = DB::table('idol_bands')
-            ->paginate(10);
+            ->paginate(2);
         return view('admin.idolbands.index',['bands' => $bands_res]);
     }
 

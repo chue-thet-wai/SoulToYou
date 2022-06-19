@@ -40,7 +40,9 @@ class IdolManageUser extends Controller
         ->update(['is_admin' => $request->role_status]);
         if($result){
             return redirect(url('admin/userlist'))->with('success','User Updated Successfully!');
-        } 
+        } else{
+            return redirect(url('admin/userlist'))->with('success','No change made.');
+        }
     }
     public function destroy_user($id)
     {

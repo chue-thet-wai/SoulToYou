@@ -33,8 +33,8 @@
                                     <td>User</td>
                                 @endif
                                 <td style="display: flex;">
-                                    <a href="{{ url('admin/edit/'.$n->id) }}" class="btn btn-sm btn-warning" style="margin-right:5%;">Update</a>
-                                    <form method="post" action="{{ url('admin/delete/'.$n->id) }}">
+                                    <a href="{{ url('admin/userlist/edit/'.$n->id) }}" class="btn btn-sm btn-warning" style="margin-right:5%;">Update</a>
+                                    <form method="post" action="{{ url('admin/userlist/delete/'.$n->id) }}">
                                          @csrf
                                         <input type="submit" class="btn btn-sm btn-danger" value="Delete">
                                     </form>
